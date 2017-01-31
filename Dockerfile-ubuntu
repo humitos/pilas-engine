@@ -1,0 +1,26 @@
+FROM ubuntu:16.04
+
+RUN apt-get update
+RUN apt-get install -y \
+            python-setuptools \
+            python-qt4 \
+            python-qt4-gl \
+            git-core \
+            python-qt4-phonon \
+            build-essential \
+            python-dev \
+            swig \
+            subversion \
+            python-pygame \
+            python-pip
+
+RUN pip install --upgrade pip
+RUN pip install box2d
+
+RUN git clone --depth 1 http://github.com/hugoruscitti/pilas /code
+
+RUN adduser --quiet --disabled-password pilas
+
+WORKDIR /code
+
+CMD ./bin/pilasengine
