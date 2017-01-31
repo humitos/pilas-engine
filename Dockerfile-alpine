@@ -1,10 +1,6 @@
 FROM alpine:edge
 
-RUN echo "@v3.4 http://dl-cdn.alpinelinux.org/alpine/v3.4/main" >> /etc/apk/repositories
-RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-
 RUN apk update
-
 RUN apk add \
         python2 \
         py2-pip \
@@ -12,14 +8,17 @@ RUN apk add \
         gcc \
         g++ \
         python-dev \
+        icu-libs \
+        mesa-dri-swrast
+
+RUN echo "@v3.4 http://dl-cdn.alpinelinux.org/alpine/v3.4/main" >> /etc/apk/repositories
+RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+
+RUN apt update
+RUN apk add \
         swig@v3.4 \
         py-qt@testing \
-        icu-libs \
-        mesa-dri-swrast \
-        sdl \
-        sdl-dev \
-        sdl_image-dev \
-        sdl_mixer-dev
+
 
 RUN git clone --depth 1 http://github.com/hugoruscitti/pilas /code
 
