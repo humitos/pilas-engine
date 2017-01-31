@@ -14,7 +14,7 @@ RUN apk add \
 RUN echo "@v3.4 http://dl-cdn.alpinelinux.org/alpine/v3.4/main" >> /etc/apk/repositories
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 
-RUN apt update
+RUN apk update
 RUN apk add \
         swig@v3.4 \
         py-qt@testing \
