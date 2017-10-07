@@ -1,4 +1,8 @@
+# THIS IS A WORK IN PROGRESS
+# expect this to fail :)
+
 FROM alpine:edge
+MAINTAINER Manuel Kaufmann <humitos@gmail.com>
 
 RUN apk update
 RUN apk add \
@@ -20,7 +24,9 @@ RUN apk add \
         py-qt@testing \
 
 
-RUN git clone --depth 1 http://github.com/hugoruscitti/pilas /code
+RUN git clone http://github.com/hugoruscitti/pilas /code \
+    && cd /code \
+    && git checkout 1.4.11
 
 RUN pip install --upgrade pip
 RUN pip install box2d
