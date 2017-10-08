@@ -5,24 +5,25 @@ FROM alpine:edge
 MAINTAINER Manuel Kaufmann <humitos@gmail.com>
 
 RUN apk update
-RUN apk add \
-        python2 \
-        py2-pip \
-        git \
-        gcc \
-        g++ \
-        python-dev \
-        icu-libs \
-        mesa-dri-swrast
+    && apk add \
+           python2 \
+           py2-pip \
+           git \
+           gcc \
+           g++ \
+           python-dev \
+           icu-libs \
+           mesa-dri-swrast
 
 RUN echo "@v3.4 http://dl-cdn.alpinelinux.org/alpine/v3.4/main" >> /etc/apk/repositories
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 
-RUN apk update
-RUN apk add \
-        swig@v3.4 \
-        py-qt@testing \
+RUN apk update \
+    && apk add \
+            swig@v3.4 \
+            py-qt@testing \
 
+RUN mkdir /code
 
 RUN git clone http://github.com/hugoruscitti/pilas /code \
     && cd /code \
