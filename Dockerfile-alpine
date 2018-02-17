@@ -4,7 +4,7 @@
 FROM alpine:edge
 MAINTAINER Manuel Kaufmann <humitos@gmail.com>
 
-RUN apk update
+RUN apk update \
     && apk add \
            python2 \
            py2-pip \
