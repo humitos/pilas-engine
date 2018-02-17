@@ -22,7 +22,7 @@ RUN adduser --quiet --disabled-password pilas
 
 RUN git clone http://github.com/hugoruscitti/pilas /code \
     && cd /code \
-    && git checkout 1.4.11
+    && git checkout 1.4.12
 
 WORKDIR /code
 
