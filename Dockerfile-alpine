@@ -27,7 +27,7 @@ RUN mkdir /code
 
 RUN git clone http://github.com/hugoruscitti/pilas /code \
     && cd /code \
-    && git checkout 1.4.11
+    && git checkout 1.4.12
 
 RUN pip install --upgrade pip
 RUN pip install box2d
