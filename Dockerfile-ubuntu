@@ -24,6 +24,7 @@ RUN git clone http://github.com/hugoruscitti/pilas /code \
     && cd /code \
     && git checkout 1.4.12
 
+COPY configuracion_pilas.json /root/.configuracion_pilas.json
 WORKDIR /code
 
 CMD ./bin/pilasengine
