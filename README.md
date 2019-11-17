@@ -17,7 +17,7 @@ After executing that command, you can open your favourite browser and access htt
 Run this command:
 
         docker run -it --device /dev/snd --env QT_X11_NO_MITSHM=1 \
-        -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $XAUTHORITY:$HOME/.Xauthority \
+        -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $XAUTHORITY:/root/.Xauthority \
         --net=host humitos/pilas-engine:1.4.12
 
 Enjoy!
