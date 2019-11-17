@@ -10,7 +10,10 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get update
 RUN apt-get install -y yarn
 
-RUN git clone --depth 1 https://github.com/pilas-engine/pilas-engine
+RUN git clone https://github.com/pilas-engine/pilas-engine ; \
+    cd pilas-engine ; \
+    git checkout v2.0.90
+
 RUN cd pilas-engine ; \
     make iniciar
 
