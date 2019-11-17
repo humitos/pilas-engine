@@ -2,29 +2,18 @@ FROM ubuntu:18.04
 MAINTAINER Manuel Kaufmann <humitos@gmail.com>
 
 RUN apt-get update
-RUN apt-get install -y \
-            python-setuptools \
-            python-qt4 \
-            python-qt4-gl \
-            git-core \
-            python-qt4-phonon \
-            build-essential \
-            python-dev \
-            swig \
-            subversion \
-            python-pygame \
-            python-pip
+RUN apt-get install -y wget unzip git make nodejs npm
 
-RUN pip install --upgrade pip
-RUN pip install box2d==2.3.2
+# Install latest stable yarn
+RUN wget -O - https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update
+RUN apt-get install -y yarn
 
-RUN adduser --quiet --disabled-password pilas
+RUN git clone --depth 1 https://github.com/pilas-engine/pilas-engine
+RUN cd pilas-engine ; \
+    make iniciar
 
-RUN git clone http://github.com/hugoruscitti/pilas /code \
-    && cd /code \
-    && git checkout 1.4.12
+WORKDIR /pilas-engine
 
-COPY configuracion_pilas.json /root/.configuracion_pilas.json
-WORKDIR /code
-
-CMD ./bin/pilasengine
+CMD make ejecutar

@@ -2,6 +2,6 @@
 
 Run docker image to use pilas-engine without install anything
 
-    docker run -it --device /dev/snd --env QT_X11_NO_MITSHM=1 \
-      -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $XAUTHORITY:/root/.Xauthority \
-      --net=host humitos/pilas-engine:latest
+    docker run -it --rm -p '4200:4200' --device /dev/snd humitos/pilas-engine:latest
+
+After executing that command, you can open your favourite browser and access http://localhost:4200/
